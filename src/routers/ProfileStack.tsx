@@ -11,6 +11,8 @@ import Settings from "@modules/profile/screens/Settings";
 import Post from "@modules/profile/screens/Post";
 import translate from "@helpers/localization";
 import { ScreenOptions } from "@utils/ScreenOptions";
+import PersonalData from "@modules/profile/screens/PersonalData";
+import SignOut from "@modules/profile/screens/SignOut";
 
 enableScreens();
 
@@ -44,6 +46,22 @@ function ProfileStack() {
         name={Routes.Post}
         component={Post}
         options={({ route }) => ({ headerTitle: route.params.username })}
+      />
+
+      <Stack.Screen
+        name={Routes.PersonalData}
+        component={PersonalData}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name={Routes.SignOut}
+        component={SignOut}
+        options={{
+          headerShown: false,
+        }}
       />
     </Stack.Navigator>
   );

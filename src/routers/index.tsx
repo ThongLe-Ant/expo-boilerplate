@@ -11,6 +11,8 @@ import Login from "@modules/app/screens/Login";
 import BottomNavigation from "./BottomNavigation";
 import { ScreenOptions } from "@utils/ScreenOptions";
 import Routes, { RootStackParams } from "@utils/Routes";
+import Register from "@modules/app/screens/Register";
+import ForgotPassword from "@modules/app/screens/ForgotPassword";
 
 enableScreens();
 
@@ -58,6 +60,16 @@ function RootNavigation() {
               <Stack.Screen
                 name={Routes.Login}
                 component={Login}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name={Routes.Register}
+                component={Register}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name={Routes.ForgotPassword}
+                component={ForgotPassword}
                 options={{ headerShown: false }}
               />
             </>

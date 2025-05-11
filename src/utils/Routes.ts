@@ -6,7 +6,11 @@ export enum Routes {
   Login = 'Login',
   Profile = 'Profile',
   Settings = 'Settings',
-  Post = 'Post'
+  Post = 'Post',
+  Register = 'Register',
+  ForgotPassword = 'ForgotPassword',
+  PersonalData = 'PersonalData',
+  SignOut = 'SignOut',
 }
 
 /**
@@ -15,6 +19,8 @@ export enum Routes {
 export type RootStackParams = {
   [Routes.Home]: undefined;
   [Routes.Login]: undefined;
+  [Routes.Register]: undefined;
+  [Routes.ForgotPassword]: undefined;
 };
 
 /**
@@ -24,6 +30,8 @@ export type ProfileStackParams = {
   [Routes.Profile]: undefined;
   [Routes.Settings]: undefined;
   [Routes.Post]: { id: string, username: string };
+  [Routes.PersonalData]: undefined;
+  [Routes.SignOut]: { onSignOut: () => void } | undefined;
 };
 
 /**

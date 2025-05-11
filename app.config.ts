@@ -36,7 +36,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   android: {
     adaptiveIcon: {
-      foregroundImage: "./src/assets/images/adaptive-icon.png",
+      foregroundImage: "./src/assets/images/go_eat_go.jpg",
       backgroundColor: "#ffffff",
     },
     package: "com.milvasoft.expoboilerplate",
