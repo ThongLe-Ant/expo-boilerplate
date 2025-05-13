@@ -7,10 +7,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Alert,
-  ScrollView,
   Dimensions,
-  TextInput,
-  PixelRatio,
 } from "react-native";
 import Input from "@components/Input";
 import Button from "@components/Button";
@@ -22,7 +19,7 @@ import Routes, { RootStackParams } from "@utils/Routes";
 import TopNavigation from "@components/TopNavigation";
 
 const { width, height } = Dimensions.get("window");
-const scale = (size: number) => Math.round(size * width / 375);
+const scale = (size: number) => Math.round((size * width) / 375);
 
 export default function Register() {
   const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
@@ -57,15 +54,14 @@ export default function Register() {
         leftIcon={<Icon name="back" size={24} color="#5E616F" />}
         onLeftPress={() => navigation.navigate(Routes.Login)}
       />
-      
+
       <View style={styles.headerWrap}>
         <Text style={styles.title}>Sign Up</Text>
         <Text style={styles.description}>Please sign up to get started</Text>
       </View>
       <View style={styles.bottomCard}>
         <View style={styles.formBlock}>
-          <View>
-           
+          <View style={styles.inputBlock}>
             <Input
               label={"Email"}
               value={email}
@@ -77,36 +73,30 @@ export default function Register() {
             />
           </View>
           <View style={styles.inputBlock}>
-            
             <Input
               label={"Name"}
               placeholder="John doe"
               value={username}
               onChangeText={setUsername}
               autoCapitalize="words"
-             
             />
           </View>
           <View style={styles.inputBlock}>
-         
             <Input
               label={"Password"}
               placeholder="**********"
               value={password}
               onChangeText={setPassword}
               secureTextEntry
-              
             />
           </View>
           <View style={styles.inputBlock}>
-          
             <Input
               label={"Re-Type Password"}
               placeholder="**********"
               value={retypePassword}
               onChangeText={setRetypePassword}
               secureTextEntry
-              
             />
           </View>
           <View style={styles.checkboxBlock}>
@@ -165,15 +155,15 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     backgroundColor: "#FFF",
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    paddingHorizontal: scale(20),
-    paddingTop: scale(32),
-    paddingBottom: scale(32),
-    shadowColor: "#797777",
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    paddingHorizontal: 28,
+    paddingTop: 48,
+    paddingBottom: 48,
+    shadowColor: "#c5c0c0",
     shadowOffset: { width: 0, height: -8 },
     shadowOpacity: 0.08,
-    shadowRadius: 24,
+    shadowRadius: 10,
     elevation: 8,
     minHeight: height * 0.6,
   },
@@ -204,10 +194,10 @@ const styles = StyleSheet.create({
     marginBottom: scale(12),
   },
   inputLabel: {
-    fontFamily: 'Sen',
-    fontWeight: '400',
+    fontFamily: "Sen",
+    fontWeight: "400",
     fontSize: scale(16),
-    color: '#32343E',
+    color: "#32343E",
     marginBottom: scale(6),
   },
   input: {
@@ -220,10 +210,10 @@ const styles = StyleSheet.create({
     color: "#32343E",
   },
   checkboxBlock: {
-    fontFamily: 'Sen',
-    fontWeight: '400',
+    fontFamily: "Sen",
+    fontWeight: "400",
     fontSize: scale(16),
-    color: '#32343E',
+    color: "#32343E",
     marginBottom: scale(18),
   },
   checkboxLabel: {

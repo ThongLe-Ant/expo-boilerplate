@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     borderColor: '#E3EBF2',
     borderRadius: 8,
     paddingHorizontal: 16,
-    fontSize: 28,
+    fontSize: 22,
     backgroundColor: '#F0F5FA',
     color: '#32343E',
     fontFamily: 'Sen',

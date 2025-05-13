@@ -15,6 +15,7 @@ import GoogleIcon from '../../../assets/images/figma/social_google.svg';
 import FacebookIcon from '../../../assets/images/figma/social_facebook.svg';
 import AppleIcon from '../../../assets/images/figma/social_apple.svg';
 import Icon from "@components/Icon";
+import Input from "@components/Input";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -52,28 +53,31 @@ export default function Login() {
       </View>
       {/* Card trắng bo góc dưới cùng */}
       <View style={styles.bottomCard}>
+      <View style={styles.formBlock}>
         <View style={styles.inputBlock}>
-          <Text style={styles.inputLabel}>Email</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your email"
-            placeholderTextColor="#7E8A97"
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
+        
+        <Input
+              label={"Email"}
+              value={email}
+              onChangeText={setEmail}
+              placeholder="Enter your email"
+              placeholderTextColor="#7E8A97"
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
         </View>
         <View style={styles.inputBlock}>
-          <Text style={styles.inputLabel}>Password</Text>
-          <TextInput
-            style={styles.input}
+         
+          <Input
+            label="Password"
+            
             placeholder="Enter your password"
             placeholderTextColor="#7E8A97"
             value={password}
             onChangeText={setPassword}
             secureTextEntry
           />
+        </View>
         </View>
         <View style={styles.rowBetween}>
           <TouchableOpacity style={styles.rememberMe} onPress={() => setRemember(!remember)}>
@@ -145,18 +149,22 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     backgroundColor: '#FFF',
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
     paddingHorizontal: 28,
     paddingTop: 48,
     paddingBottom: 48,
-    shadowColor: '#797777',
+    shadowColor: '#c5c0c0',
     shadowOffset: { width: 0, height: -8 },
-    
     shadowOpacity: 0.08,
-    shadowRadius: 24,
+    shadowRadius: 10,
     elevation: 8,
     minHeight: 0.72 * SCREEN_HEIGHT,
+  },
+  formBlock: {
+    width: "100%",
+    alignSelf: "center",
+    paddingHorizontal: 0,
   },
   inputBlock: {
     marginBottom: 16,
