@@ -11,6 +11,7 @@ export enum Routes {
   ForgotPassword = 'ForgotPassword',
   PersonalData = 'PersonalData',
   SignOut = 'SignOut',
+  OrderPlan = 'OrderPlan',
 }
 
 /**
@@ -21,6 +22,7 @@ export type RootStackParams = {
   [Routes.Login]: undefined;
   [Routes.Register]: undefined;
   [Routes.ForgotPassword]: undefined;
+  [Routes.OrderPlan]: undefined;
 };
 
 /**

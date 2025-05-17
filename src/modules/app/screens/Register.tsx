@@ -8,6 +8,7 @@ import {
   Platform,
   Alert,
   Dimensions,
+  ImageBackground,
 } from "react-native";
 import Input from "@components/Input";
 import Button from "@components/Button";
@@ -17,6 +18,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import Routes, { RootStackParams } from "@utils/Routes";
 import TopNavigation from "@components/TopNavigation";
+import CoverFood from '../../../assets/images/cover_food2.jpg';
 
 const { width, height } = Dimensions.get("window");
 const scale = (size: number) => Math.round((size * width) / 375);
@@ -46,90 +48,95 @@ export default function Register() {
   };
 
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1, backgroundColor: "#121223" }}
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
+    <ImageBackground
+      source={CoverFood}
+      style={{ flex: 1 }}
+      resizeMode="cover"
     >
-      <TopNavigation
-        leftIcon={<Icon name="back" size={24} color="#5E616F" />}
-        onLeftPress={() => navigation.navigate(Routes.Login)}
-      />
-
-      <View style={styles.headerWrap}>
-        <Text style={styles.title}>Sign Up</Text>
-        <Text style={styles.description}>Please sign up to get started</Text>
-      </View>
-      <View style={styles.bottomCard}>
-        <View style={styles.formBlock}>
-          <View style={styles.inputBlock}>
-            <Input
-              label={"Email"}
-              value={email}
-              onChangeText={setEmail}
-              placeholder="Enter your email"
-              placeholderTextColor="#7E8A97"
-              keyboardType="email-address"
-              autoCapitalize="none"
-            />
-          </View>
-          <View style={styles.inputBlock}>
-            <Input
-              label={"Name"}
-              placeholder="John doe"
-              value={username}
-              onChangeText={setUsername}
-              autoCapitalize="words"
-            />
-          </View>
-          <View style={styles.inputBlock}>
-            <Input
-              label={"Password"}
-              placeholder="**********"
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry
-            />
-          </View>
-          <View style={styles.inputBlock}>
-            <Input
-              label={"Re-Type Password"}
-              placeholder="**********"
-              value={retypePassword}
-              onChangeText={setRetypePassword}
-              secureTextEntry
-            />
-          </View>
-          <View style={styles.checkboxBlock}>
-            <Checkbox
-              checked={agree}
-              onChange={setAgree}
-              label="I Agree with Terms of Service and Privacy Policy"
-            />
-          </View>
-          <Button
-            title={loading ? "Loading..." : "Sign Up"}
-            onPress={handleRegister}
-            loading={loading}
-            style={styles.registerBtnWrap}
-          />
-          <TouchableOpacity
-            style={styles.loginContainer}
-            onPress={() => navigation.navigate(Routes.Login)}
-          >
-            <Text style={styles.login}>
-              Already have an account?{" "}
-              <Text style={styles.loginLink}>Sign In</Text>
-            </Text>
-          </TouchableOpacity>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
+        <TopNavigation
+          leftIcon={<Icon name="back" size={24} color="#5E616F" />}
+          onLeftPress={() => navigation.navigate(Routes.Login)}
+        />
+        <View style={styles.headerWrap}>
+          <Text style={styles.title}>Sign Up</Text>
+          <Text style={styles.description}>Please sign up to get started</Text>
         </View>
-      </View>
-    </KeyboardAvoidingView>
+        <View style={styles.bottomCard}>
+          <View style={styles.formBlock}>
+            <View style={styles.inputBlock}>
+              <Input
+                label={"Email"}
+                value={email}
+                onChangeText={setEmail}
+                placeholder="Enter your email"
+                placeholderTextColor="#7E8A97"
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
+            </View>
+            <View style={styles.inputBlock}>
+              <Input
+                label={"Name"}
+                placeholder="John doe"
+                value={username}
+                onChangeText={setUsername}
+                autoCapitalize="words"
+              />
+            </View>
+            <View style={styles.inputBlock}>
+              <Input
+                label={"Password"}
+                placeholder="**********"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+              />
+            </View>
+            <View style={styles.inputBlock}>
+              <Input
+                label={"Re-Type Password"}
+                placeholder="**********"
+                value={retypePassword}
+                onChangeText={setRetypePassword}
+                secureTextEntry
+              />
+            </View>
+            <View style={styles.checkboxBlock}>
+              <Checkbox
+                checked={agree}
+                onChange={setAgree}
+                label="I Agree with Terms of Service and Privacy Policy"
+              />
+            </View>
+            <Button
+              title={loading ? "Loading..." : "Sign Up"}
+              onPress={handleRegister}
+              loading={loading}
+              style={styles.registerBtnWrap}
+            />
+            <TouchableOpacity
+              style={styles.loginContainer}
+              onPress={() => navigation.navigate(Routes.Login)}
+            >
+              <Text style={styles.login}>
+                Already have an account?{" "}
+                <Text style={styles.loginLink}>Sign In</Text>
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </KeyboardAvoidingView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   headerWrap: {
-    marginTop: scale(30),
+    marginTop: scale(20),
     marginBottom: scale(24),
     paddingHorizontal: scale(24),
   },

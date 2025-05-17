@@ -37,15 +37,16 @@ const products = [
 export default function Home() {
   return (
     <SafeAreaView style={styles.safeView}>
+      {/* Status Bar & Home Indicator sẽ do hệ điều hành quản lý, không cần code riêng */}
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         {/* Header */}
         <View style={styles.header}>
           <Image source={require('../../../assets/images/go_eat_go.jpg')} style={styles.avatar} />
           <View style={styles.locationBlock}>
-            <Text style={styles.deliveryTo}>Delivery to</Text>
+            <Text style={styles.locationLabel}>Your Location</Text>
             <View style={styles.locationRow}>
               <Icon name="location" size={18} color="#FE8C00" />
-              <Text style={styles.locationText}>Ho Chi Minh City</Text>
+              <Text style={styles.locationText}>New York City</Text>
               <Icon name="chevron-down" size={16} color="#878787" />
             </View>
           </View>
@@ -53,6 +54,9 @@ export default function Home() {
             <Icon name="bell" size={24} color="#101010" />
           </TouchableOpacity>
         </View>
+
+        {/* Title */}
+        <Text style={styles.bigTitle}>Provide the best food for you</Text>
 
         {/* Banner */}
         <Image source={require('../../../assets/images/home_banner.png')} style={styles.banner} resizeMode="cover" />
@@ -66,7 +70,7 @@ export default function Home() {
           </TouchableOpacity>
         </View>
 
-        {/* Section Title */}
+        {/* Section Title: Category */}
         <View style={styles.sectionTitleRow}>
           <Text style={styles.sectionTitle}>Find by Category</Text>
           <TouchableOpacity>
@@ -86,7 +90,7 @@ export default function Home() {
           ))}
         </View>
 
-        {/* Section Title */}
+        {/* Section Title: Popular Food */}
         <View style={styles.sectionTitleRow}>
           <Text style={styles.sectionTitle}>Popular Food</Text>
           <TouchableOpacity>
@@ -151,10 +155,10 @@ const styles = StyleSheet.create({
   locationBlock: {
     flex: 1,
   },
-  deliveryTo: {
-    fontSize: 12,
+  locationLabel: {
+    fontSize: 14,
     color: '#878787',
-    fontFamily: 'Montserrat_500Medium',
+    fontFamily: 'Inter_400Regular',
   },
   locationRow: {
     flexDirection: 'row',
@@ -321,5 +325,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#FE8C00',
     fontFamily: 'Montserrat_600SemiBold',
+  },
+  bigTitle: {
+    fontSize: 32,
+    color: '#101010',
+    fontFamily: 'Inter_600SemiBold',
+    marginHorizontal: 24,
+    marginBottom: 12,
+    marginTop: 0,
   },
 });

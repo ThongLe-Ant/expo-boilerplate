@@ -13,6 +13,7 @@ import { ScreenOptions } from "@utils/ScreenOptions";
 import Routes, { RootStackParams } from "@utils/Routes";
 import Register from "@modules/app/screens/Register";
 import ForgotPassword from "@modules/app/screens/ForgotPassword";
+import OrderPlan from '@modules/app/screens/OrderPlan';
 
 enableScreens();
 
@@ -54,6 +55,11 @@ function RootNavigation() {
                   headerTitle: translate("navigation.home"),
                 }}
               />
+              <Stack.Screen
+                name={Routes.OrderPlan}
+                component={OrderPlan}
+                options={{ headerShown: false }}
+              />
             </>
           ) : (
             <>
@@ -72,6 +78,7 @@ function RootNavigation() {
                 component={ForgotPassword}
                 options={{ headerShown: false }}
               />
+             
             </>
           )}
         </Stack.Navigator>

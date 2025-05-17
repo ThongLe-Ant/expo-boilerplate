@@ -7,6 +7,7 @@ import Home from "@modules/app/screens/Home";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { useTheme } from "@src/hooks";
 import ProfileStack from "./ProfileStack";
+import OrderPlan from '@modules/app/screens/OrderPlan';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,7 +30,16 @@ export default function TabNavigator() {
           ),
         }}
       />
-
+      <Tab.Screen
+        name="OrderPlan"
+        component={OrderPlan}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="calendar" size={24} color={color} />
+          ),
+          tabBarLabel: 'Order Plan',
+        }}
+      />
       <Tab.Screen
         name="Profile"
         component={ProfileStack}
@@ -39,6 +49,8 @@ export default function TabNavigator() {
           ),
         }}
       />
+
+      
     </Tab.Navigator>
   );
 }

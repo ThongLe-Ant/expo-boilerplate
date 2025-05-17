@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform, Alert, Dimensions } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform, Alert, Dimensions, ImageBackground } from "react-native";
 import Input from "@components/Input";
 import Button from "@components/Button";
 import Icon from "@components/Icon";
@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import Routes, { RootStackParams } from '@utils/Routes';
 import TopNavigation from "@components/TopNavigation";
+import CoverFood from '../../../assets/images/cover_food2.jpg';
 
 const { width, height } = Dimensions.get('window');
 const scale = (size: number) => Math.round(size * width / 375);
@@ -29,47 +30,53 @@ export default function ForgotPassword() {
   };
 
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1, backgroundColor: '#121223' }}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    <ImageBackground
+      source={CoverFood}
+      style={{ flex: 1 }}
+      resizeMode="cover"
     >
-      <TopNavigation
-        leftIcon={<Icon name="back" size={24} color="#5E616F" />}
-        onLeftPress={() => navigation.navigate(Routes.Login)}
-      />
-      <View style={styles.headerWrap}>
-        <Text style={styles.title}>Forgot Password?</Text>
-        <Text style={styles.description}>Enter your email address to reset your password</Text>
-      </View>
-      <View style={styles.bottomCard}>
-        <View style={styles.formBlock}>
-          <Input
-            label={"Email"}
-            value={email}
-            onChangeText={setEmail}
-            placeholder="Enter your email"
-            placeholderTextColor="#7E8A97"
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-          <Button
-            title={loading ? "Loading..." : "Send"}
-            onPress={handleSend}
-            loading={loading}
-            style={styles.sendBtnWrap}
-          />
-          <TouchableOpacity style={styles.loginContainer} onPress={() => navigation.navigate(Routes.Login)}>
-            <Text style={styles.login}>Remember your password? <Text style={styles.loginLink}>Sign In</Text></Text>
-          </TouchableOpacity>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
+        <TopNavigation
+          leftIcon={<Icon name="back" size={24} color="#5E616F" />}
+          onLeftPress={() => navigation.navigate(Routes.Login)}
+        />
+        <View style={styles.headerWrap}>
+          <Text style={styles.title}>Forgot Password?</Text>
+          <Text style={styles.description}>Enter your email address to reset your password</Text>
         </View>
-      </View>
-    </KeyboardAvoidingView>
+        <View style={styles.bottomCard}>
+          <View style={styles.formBlock}>
+            <Input
+              label={"Email"}
+              value={email}
+              onChangeText={setEmail}
+              placeholder="Enter your email"
+              placeholderTextColor="#7E8A97"
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+            <Button
+              title={loading ? "Loading..." : "Send"}
+              onPress={handleSend}
+              loading={loading}
+              style={styles.sendBtnWrap}
+            />
+            <TouchableOpacity style={styles.loginContainer} onPress={() => navigation.navigate(Routes.Login)}>
+              <Text style={styles.login}>Remember your password? <Text style={styles.loginLink}>Sign In</Text></Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </KeyboardAvoidingView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   headerWrap: {
-    marginTop: scale(40),
+    marginTop: scale(20),
     marginBottom: scale(24),
     paddingHorizontal: scale(24),
   },

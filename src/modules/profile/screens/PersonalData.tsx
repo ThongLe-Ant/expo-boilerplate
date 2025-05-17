@@ -17,18 +17,21 @@ export default function PersonalData({ navigation }: any) {
       <View style={styles.avatarBlock}>
         <Image source={avatar} style={styles.avatar} resizeMode="cover" />
         <TouchableOpacity style={styles.avatarEditBtn}>
-          <Icon name="camera" size={18} color="#FE8C00" />
+          <Icon name="edit" size={18} color="#FE8C00" />
+         
         </TouchableOpacity>
+       
       </View>
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
-        <Text style={styles.title}>Personal Data</Text>
-        <View style={styles.form}>
-          <Input label="Full Name" placeholder="Enter your full name" style={styles.input} />
-          <Input label="Email" placeholder="Enter your email" keyboardType="email-address" style={styles.input} />
-          <Input label="Phone Number" placeholder="Enter your phone number" keyboardType="phone-pad" style={styles.input} />
-          <Input label="Address" placeholder="Enter your address" style={styles.input} />
-          <Input label="Birthday" placeholder="DD/MM/YYYY" style={styles.input} />
-          <Input label="Gender" placeholder="Select gender" style={styles.input} />
+      <Text style={styles.title}>Thông Lê</Text>
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+       
+      <View style={styles.menuSection}>
+          <Input label="Full Name" placeholder="Enter your full name" />
+          <Input label="Email" placeholder="Enter your email" keyboardType="email-address"  />
+          <Input label="Phone Number" placeholder="Enter your phone number" keyboardType="phone-pad" />
+          <Input label="Address" placeholder="Enter your address" />
+          <Input label="Birthday" placeholder="DD/MM/YYYY"  />
+          <Input label="Gender" placeholder="Select gender" />
         </View>
         <Button
           style={styles.saveBtn}
@@ -49,8 +52,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
   },
   content: {
-    paddingHorizontal: 24,
-    paddingBottom: 32,
+    paddingHorizontal: 10,
+    paddingBottom: 10,
   },
   title: {
     fontFamily: 'Montserrat_700Bold',
@@ -61,11 +64,11 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   form: {
-    gap: 3,
+    gap: 2,
     marginBottom: 10,
   },
   input: {
-    marginBottom: 0,
+    marginBottom: 8,
   },
   saveBtn: {
     borderRadius: 100,
@@ -73,7 +76,7 @@ const styles = StyleSheet.create({
     height: 56,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 0,
+    marginTop: 24,
   },
   saveBtnText: {
     color: '#FFF',
@@ -83,8 +86,8 @@ const styles = StyleSheet.create({
   avatarBlock: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 16,
-    marginBottom: 8,
+    marginTop: 12,
+    marginBottom: 0,
   },
   avatar: {
     width: 96,
@@ -110,4 +113,23 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
     backgroundColor: '#FFF',
   },
+  menuSection: {
+    width: '90%',
+    alignSelf: 'center',
+    marginBottom: 16,
+    backgroundColor: '#FFF',
+    borderRadius: 12,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+   
+    shadowColor: '#000',
+    shadowOpacity: 0.11,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  scrollContent: {
+    alignItems: 'center',
+    paddingBottom: 120,
+    backgroundColor: '#FFF',
+  }
 }); 

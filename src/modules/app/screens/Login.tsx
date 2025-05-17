@@ -2,7 +2,7 @@
  * @author Ali Burhan Keskin <alikeskin@milvasoft.com>
  */
 import React, { useCallback, useState } from "react";
-import { View, StyleSheet, KeyboardAvoidingView, Platform, Alert, Text, TouchableOpacity, TextInput, Image, Dimensions } from "react-native";
+import { View, StyleSheet, KeyboardAvoidingView, Platform, Alert, Text, TouchableOpacity, TextInput, Image, Dimensions, ImageBackground } from "react-native";
 import { useDispatch } from "react-redux";
 import { showToast } from "@helpers/toast/showToast";
 import { SetUser } from "@modules/app/redux/appSlice";
@@ -14,6 +14,7 @@ import Button from "@components/Button";
 import GoogleIcon from '../../../assets/images/figma/social_google.svg';
 import FacebookIcon from '../../../assets/images/figma/social_facebook.svg';
 import AppleIcon from '../../../assets/images/figma/social_apple.svg';
+import CoverFood from '../../../assets/images/cover_food2.jpg';
 import Icon from "@components/Icon";
 import Input from "@components/Input";
 
@@ -42,65 +43,67 @@ export default function Login() {
   }, [dispatch, email, password, navigation]);
 
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1, backgroundColor: '#121223' }}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    <ImageBackground
+      source={CoverFood}
+      style={{ flex: 1 }}
+      resizeMode="cover"
     >
-      {/* Header trên cùng */}
-      <View style={styles.headerWrap}>
-        <Text style={styles.loginTitle}>Log In</Text>
-        <Text style={styles.loginDesc}>Please sign in to your existing account</Text>
-      </View>
-      {/* Card trắng bo góc dưới cùng */}
-      <View style={styles.bottomCard}>
-      <View style={styles.formBlock}>
-        <View style={styles.inputBlock}>
-        
-        <Input
-              label={"Email"}
-              value={email}
-              onChangeText={setEmail}
-              placeholder="Enter your email"
-              placeholderTextColor="#7E8A97"
-              keyboardType="email-address"
-              autoCapitalize="none"
-            />
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
+        {/* Header trên cùng */}
+        <View style={styles.headerWrap}>
+          <Text style={styles.loginTitle}>Log In</Text>
+          <Text style={styles.loginDesc}>Please sign in to your existing account</Text>
         </View>
-        <View style={styles.inputBlock}>
-         
-          <Input
-            label="Password"
-            
-            placeholder="Enter your password"
-            placeholderTextColor="#7E8A97"
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
+        {/* Card trắng bo góc dưới cùng */}
+        <View style={styles.bottomCard}>
+          <View style={styles.formBlock}>
+            <View style={styles.inputBlock}>
+              <Input
+                label={"Email"}
+                value={email}
+                onChangeText={setEmail}
+                placeholder="Enter your email"
+                placeholderTextColor="#7E8A97"
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
+            </View>
+            <View style={styles.inputBlock}>
+              <Input
+                label="Password"
+                placeholder="Enter your password"
+                placeholderTextColor="#7E8A97"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+              />
+            </View>
+          </View>
+          <View style={styles.rowBetween}>
+            <TouchableOpacity style={styles.rememberMe} onPress={() => setRemember(!remember)}>
+              <View style={[styles.checkbox, remember && styles.checkboxActive]} />
+              <Text style={styles.rememberText}>Remember me</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate(Routes.ForgotPassword)}>
+              <Text style={styles.forgot}>Forgot Password</Text>
+            </TouchableOpacity>
+          </View>
+          <Button
+            title={loading ? "Loading..." : "Log In"}
+            onPress={handleLogin}
+            loading={loading}
+            style={styles.signInBtnWrap}
           />
-        </View>
-        </View>
-        <View style={styles.rowBetween}>
-          <TouchableOpacity style={styles.rememberMe} onPress={() => setRemember(!remember)}>
-            <View style={[styles.checkbox, remember && styles.checkboxActive]} />
-            <Text style={styles.rememberText}>Remember me</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate(Routes.ForgotPassword)}>
-            <Text style={styles.forgot}>Forgot Password</Text>
-          </TouchableOpacity>
-        </View>
-        <Button
-          title={loading ? "Loading..." : "Log In"}
-          onPress={handleLogin}
-          loading={loading}
-          style={styles.signInBtnWrap}
-        />
-        <View style={styles.separatorContainer}>
-          <View style={styles.separator} />
-          <Text style={styles.orText}>Or</Text>
-          <View style={styles.separator} />
-        </View>
-        <View style={styles.socialContainer}>
-        <TouchableOpacity style={styles.socialButton} onPress={() => Alert.alert("Google sign in")}> 
+          <View style={styles.separatorContainer}>
+            <View style={styles.separator} />
+            <Text style={styles.orText}>Or</Text>
+            <View style={styles.separator} />
+          </View>
+          <View style={styles.socialContainer}>
+            <TouchableOpacity style={styles.socialButton} onPress={() => Alert.alert("Google sign in")}> 
               <Icon name="search" size={24} color="#EA4335" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialButton} onPress={() => Alert.alert("Facebook sign in")}> 
@@ -109,15 +112,16 @@ export default function Login() {
             <TouchableOpacity style={styles.socialButton} onPress={() => Alert.alert("Apple sign in")}> 
               <Icon name="user" size={24} color="#000" />
             </TouchableOpacity>
+          </View>
+          <View style={styles.registerRow}>
+            <Text style={styles.registerText}>Don't have an account?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate(Routes.Register)}>
+              <Text style={styles.registerLink}> Sign Up</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.registerRow}>
-          <Text style={styles.registerText}>Don't have an account?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate(Routes.Register)}>
-            <Text style={styles.registerLink}> Sign Up</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    </ImageBackground>
   );
 }
 
